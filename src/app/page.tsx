@@ -3,13 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { IoLogoWhatsapp } from "react-icons/io";
 import { MdClose } from "react-icons/md";
+import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Home() {
   const [navs, setNavs] = useState(false)
   return (
-    <div className="flex flex-col relative overflow-x-hidden">
-      <div className="absolute start-1/2 top-[-80%] aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4 blur-[150px] md:top-[-100%] md:-translate-x-1/2">
+    <div className="flex flex-col relative overflow-x-hidden overflow-y-hidden">
+      <div className="absolute start-1/2 top-[-40%] blur-[180px] aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4  md:top-[-50%] md:-translate-x-1/2">
         <div className="h-1/2 w-full origin-top will-change-transform bg-cover bg-no-repeat bg-image  animate-wiggle animate-infinite animate-duration-[10000ms] animate-delay-0 animate-ease-in"></div>
       </div>
       <header className="lg:w-[80%] xl:w-[65%] md:mx-auto absolute inset-4 bottom-auto top-0 z-20 pt-8 md:py-6">
@@ -65,7 +67,42 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <div className="border border-red-500 mx-auto max-w-[min(60.75rem,calc(100%-2.5rem))] mb-[9.19rem] mt-[14.69rem] md:mb-[12.19rem] md:mt-[13.69rem] md:pt-0 z-20">Main content here</div>
-    </div>
+      <div className=" mx-auto max-w-[min(60.75rem,calc(100%-2.5rem))] lg:max-w-[min(55rem,calc(100%-2.5rem))] mb-[9.19rem] mt-[12.69rem] md:mb-[12.19rem] md:mt-[13.69rem] md:pt-0 z-20 flex relative md:flex-row md:gap-2">
+        <div className="flex flex-col gap-5 md:w-[65%]">
+          {/* <h1 >Designing Experiences that feel effortless</h1> */}
+          <h2 className="text-3xl lg:text-4xl font-medium">Hallo, I’m Yves, a <span className="opacity-60">Web & Mobile  Design Expert</span> With  5 years of experience</h2>
+          <p className="text-base/5 lg:text-lg/6 mt-2">I care a lot about web & mobile apps that are beautiful, delightful, user-friendly and human experiences - Currently based in
+            <span className="line-through text-gray-400 ml-1">Kampala,</span>
+            <span className="line-through text-gray-400 mx-1">Nairobi,</span>
+            <span className="line-through text-gray-400 mr-1">London,</span>
+            <span className="font-medium">Kigali, Rwanda</span>
+          </p>
+          <div className="flex gap-4 items-center mt-6">
+            <button className="flex gap-1 items-center px-4 py-2 bg-black text-white font-medium text-sm/[1.45] rounded-full">
+              <IoLogoWhatsapp className="text-white" size={20} />
+              <span>Chat</span>
+            </button>
+            <div className="flex gap-2">
+              <Link href="#"
+                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#f8409c] hover:text-white transition-all duration-500`}
+              ><FaBasketballBall size={18} /></Link>
+              <Link href="#"
+                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#000] hover:text-white`}
+              ><FaTwitter size={18} /></Link>
+              <Link href="#"
+                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#040301] hover:text-white`}
+              ><FaGithub size={18} /></Link>
+              <Link href="#"
+                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#3a7ff5] hover:text-white`}
+              ><FaLinkedin size={18} /></Link>
+            </div>
+
+          </div>
+        </div>
+        <div className="absolute md:relative -right-32 md:-right-5 lg:-right-7 opacity-5 md:opacity-100 -z-10 md:-z-20 h-[250px] w-[200px] md:w-[230px] lg:w-[250px] bottom-0 md:basis-50 hidden">
+          <Image src="/me.png" alt="" width="300" height="300" />
+        </div>
+      </div>
+    </div >
   );
 }
