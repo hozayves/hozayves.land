@@ -5,13 +5,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdClose } from "react-icons/md";
-import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { Stacks, Works } from '../constant/constant'
+import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin } from "react-icons/fa";
+import { Work, Stack } from "@/components/Items";
+import { GoArrowDown } from "react-icons/go";
 
 export default function Home() {
   const [navs, setNavs] = useState(false)
   return (
     <div className="flex flex-col relative overflow-x-hidden overflow-y-hidden">
-      <div className="absolute start-1/2 top-[-40%] blur-[180px] aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4  md:top-[-50%] md:-translate-x-1/2">
+      <div className="absolute start-1/2 top-[-12%] blur-[130px]  aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4  md:top-[-30%] md:-translate-x-1/2">
         <div className="h-1/2 w-full origin-top will-change-transform bg-cover bg-no-repeat bg-image  animate-wiggle animate-infinite animate-duration-[10000ms] animate-delay-0 animate-ease-in"></div>
       </div>
       <header className="lg:w-[80%] xl:w-[65%] md:mx-auto absolute inset-4 bottom-auto top-0 z-20 pt-8 md:py-6">
@@ -103,6 +106,23 @@ export default function Home() {
           <Image src="/me.png" alt="" width="300" height="300" />
         </div>
       </div>
+      <main className="md:w-[90%] lg:w-[65%] mx-auto z-30">
+        <div className="flex flex-col gap-2 md:flex-row md:justify-between ">
+          <div className="p-4 rounded-lg border border-gray-200 flex flex-col gap-3 md:w-1/2">
+            <h3 className="text-xl md:text-2xl font-semibold my-2">My Stack</h3>
+            {Stacks.map(({ icon, title, subTitle }, index) => (
+              <Stack key={index} icon={icon} title={title} subTitle={subTitle} />
+            ))}
+          </div>
+          <div className="p-4 rounded-lg border border-gray-200 flex flex-col gap-3 md:w-1/2 justify-between">
+            <h3 className="text-xl md:text-2xl font-semibold my-2">Work</h3>
+            {Works.map(({ icon, company, role, from, to }, index) => (
+              <Work key={index} icon={icon} company={company} role={role} from={from} to={to} />
+            ))}
+            <Link href="#" className="bg-black text-white p-3 text-base text-center mt-7 rounded-md flex gap-2 justify-center items-center"><span>Download CV</span> <GoArrowDown /></Link>
+          </div>
+        </div>
+      </main >
     </div >
   );
 }
