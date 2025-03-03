@@ -5,16 +5,19 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { MdClose } from "react-icons/md";
-import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { Stacks, Works } from '../constant/constant'
+import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin } from "react-icons/fa";
+import { Work, Stack } from "@/components/Items";
+import { GoArrowDown, GoArrowUpRight } from "react-icons/go";
 
 export default function Home() {
   const [navs, setNavs] = useState(false)
   return (
     <div className="flex flex-col relative overflow-x-hidden overflow-y-hidden">
-      <div className="absolute start-1/2 top-[-40%] blur-[180px] aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4  md:top-[-50%] md:-translate-x-1/2">
+      <div className="absolute start-1/2 blur-[130px]  top-[-12%]  aspect-[2/1] w-[150rem] origin-bottom -translate-x-1/4  md:top-[-18%] md:-translate-x-1/2">
         <div className="h-1/2 w-full origin-top will-change-transform bg-cover bg-no-repeat bg-image  animate-wiggle animate-infinite animate-duration-[10000ms] animate-delay-0 animate-ease-in"></div>
       </div>
-      <header className="lg:w-[80%] xl:w-[65%] md:mx-auto absolute inset-4 bottom-auto top-0 z-20 pt-8 md:py-6">
+      <header id="home" className="lg:w-[80%] xl:w-[65%] md:mx-auto absolute inset-4 bottom-auto top-0 z-20 pt-8 md:py-6">
         {/* header */}
         <div className="flex gap-1 flex-row justify-between items-center">
           <div className="flex flex-col justify-start md:flex-row gap-1 lg:gap-3 items-center">
@@ -42,13 +45,13 @@ export default function Home() {
             <li>
               <Link
                 className="p-2 px-4 hover:bg-gray-700 text-center md:rounded-full md:hover:bg-white/[0.6] transition-colors"
-                href="#">Home</Link>
+                href="#home">Home</Link>
             </li>
             <li>
-              <Link className="p-2 px-4 hover:bg-gray-700 text-center rounded-full md:hover:bg-white/[0.6] transition-colors" href="#">Work</Link>
+              <Link className="p-2 px-4 hover:bg-gray-700 text-center rounded-full md:hover:bg-white/[0.6] transition-colors" href="#work">Work</Link>
             </li>
             <li>
-              <Link className="p-2 px-4 hover:bg-gray-700 text-center rounded-full md:hover:bg-white/[0.6] transition-colors" href="#">Contact</Link>
+              <Link className="p-2 px-4 hover:bg-gray-700 text-center rounded-full md:hover:bg-white/[0.6] transition-colors" href="#contact">Contact</Link>
             </li>
           </ul>
           <div className="md:hidden flex z-30 ">
@@ -103,6 +106,46 @@ export default function Home() {
           <Image src="/me.png" alt="" width="300" height="300" />
         </div>
       </div>
+      <main className="md:w-[90%] lg:w-[65%] mx-auto z-30 flex flex-col">
+        <div className="flex flex-col gap-2 md:flex-row md:justify-between  mb-4">
+          <div className="p-4 rounded-lg border border-gray-200 flex flex-col gap-3 md:w-[48.8%]">
+            <h3 className="text-xl md:text-2xl font-semibold my-2">My Stack</h3>
+            {Stacks.map(({ icon, title, subTitle }, index) => (
+              <Stack key={index} icon={icon} title={title} subTitle={subTitle} />
+            ))}
+          </div>
+          <div className="p-4 rounded-lg border border-gray-200 flex flex-col gap-3 md:w-[48.8%] justify-between">
+            <h3 className="text-xl md:text-2xl font-semibold my-2">Work</h3>
+            {Works.map(({ icon, company, role, from, to }, index) => (
+              <Work key={index} icon={icon} company={company} role={role} from={from} to={to} />
+            ))}
+            <Link href="#" className="bg-black text-white p-3 text-base text-center mt-7 rounded-md flex gap-2 justify-center items-center"><span>Download CV</span> <GoArrowDown /></Link>
+          </div>
+        </div>
+        {/* Work */}
+        <div id="work" className="h-auto flex flex-col gap-2 gap-y-3 md:flex-row md:justify-between flex-wrap">
+          {[1, 2, 3, 4, 5].map((items, index) => (
+            <div key={index} className="p-6 rounded-lg flex relative h-[400px] w-full md:w-[48.8%]">
+              <Image
+                className="w-full absolute top-0 right-0 h-full bg-cover rounded-lg"
+                src="/myWork/toa.jpg"
+                alt="Project image"
+                width={100}
+                height={100} />
+              <div className="flex justify-between items-center w-full h-12 z-20 text-white">
+                <div className="flex flex-col gap-1">
+                  <h3 className="capitalize text-xl font-medium">flop app</h3>
+                  <p className="text-xs font-light">Social media for poker players</p>
+                </div>
+                <Link href="#" className="w-10 h-10 bg-white rounded-full flex justify-center items-center text-black group relative overflow-hidden">
+                  <span className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-opacity duration-300 ease-in-out rounded-full"></span>
+                  <GoArrowUpRight size={20} className="transition-transform ease-in-out duration-300 group-hover:scale-125 group-hover:text-black/[0.6]" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main >
     </div >
   );
 }
