@@ -22,6 +22,7 @@
 
 .bg-footer {
   background-image: url("/bg-footer.png");
+  background-size: cover;
 }
 
 
@@ -54,6 +55,7 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
@@ -88,6 +90,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
