@@ -19,3 +19,7 @@
 .bg-image {
   background-image: url("/bg.svg");
 }
+
+.bg-footer {
+  background-image: url("/bg-footer.png");
+}

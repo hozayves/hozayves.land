@@ -3,12 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { IoLogoWhatsapp } from "react-icons/io";
 import { MdClose } from "react-icons/md";
 import { Stacks, Works } from '../constant/constant'
-import { FaTwitter, FaGithub, FaBasketballBall, FaLinkedin } from "react-icons/fa";
 import { Work, Stack } from "@/components/Items";
 import { GoArrowDown, GoArrowUpRight } from "react-icons/go";
+import Connect from "@/components/connect";
 
 export default function Home() {
   const [navs, setNavs] = useState(false)
@@ -80,33 +79,14 @@ export default function Home() {
             <span className="line-through text-gray-400 mr-1">London,</span>
             <span className="font-medium">Kigali, Rwanda</span>
           </p>
-          <div className="flex gap-4 items-center mt-6">
-            <button className="flex gap-1 items-center px-4 py-2 bg-black text-white font-medium text-sm/[1.45] rounded-full">
-              <IoLogoWhatsapp className="text-white" size={20} />
-              <span>Chat</span>
-            </button>
-            <div className="flex gap-2">
-              <Link href="#"
-                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#f8409c] hover:text-white transition-all duration-500`}
-              ><FaBasketballBall size={18} /></Link>
-              <Link href="#"
-                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#000] hover:text-white`}
-              ><FaTwitter size={18} /></Link>
-              <Link href="#"
-                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#040301] hover:text-white`}
-              ><FaGithub size={18} /></Link>
-              <Link href="#"
-                className={`p-2 bg-[#F2F2F2]/[0.3] rounded-full flex items-center justify-center hover:bg-[#3a7ff5] hover:text-white`}
-              ><FaLinkedin size={18} /></Link>
-            </div>
-
-          </div>
+          {/* Social connect */}
+          <Connect />
         </div>
         <div className="absolute md:relative -right-32 md:-right-5 lg:-right-7 opacity-5 md:opacity-100 -z-10 md:-z-20 h-[250px] w-[200px] md:w-[230px] lg:w-[250px] bottom-0 md:basis-50 hidden">
           <Image src="/me.png" alt="" width="300" height="300" />
         </div>
       </div>
-      <main className="md:w-[90%] lg:w-[65%] mx-auto z-30 flex flex-col">
+      <div className="md:w-[90%] lg:w-[65%] mx-auto z-30 flex flex-col mb-10">
         <div className="flex flex-col gap-2 md:flex-row md:justify-between  mb-4">
           <div className="p-4 rounded-lg border border-gray-200 flex flex-col gap-3 md:w-[48.8%]">
             <h3 className="text-xl md:text-2xl font-semibold my-2">My Stack</h3>
@@ -124,7 +104,7 @@ export default function Home() {
         </div>
         {/* Work */}
         <div id="work" className="h-auto flex flex-col gap-2 gap-y-3 md:flex-row md:justify-between flex-wrap">
-          {[1, 2, 3, 4, 5].map((items, index) => (
+          {[1, 2, 3, 4].map((items, index) => (
             <div key={index} className="p-6 rounded-lg flex relative h-[400px] w-full md:w-[48.8%]">
               <Image
                 className="w-full absolute top-0 right-0 h-full bg-cover rounded-lg"
@@ -145,7 +125,13 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </main >
+        <div id="contact" className="bg-footer w-full  mt-4 p-4 py-7 flex flex-col gap-2 rounded-lg">
+          <h2 className="text-5xl font-semibold">Want to work together</h2>
+          <p className="text-xl">Feel free to reach out for collaboration or just friendly, hello</p>
+          <p className="text-sm">muhozayves2014@gmail.com</p>
+          <Connect className="mt-10" childStyle="bg-white" />
+        </div>
+      </div >
     </div >
   );
 }
